@@ -20,7 +20,7 @@ module.exports = {
       const tasks = await model.read();
 
       res.status(200)
-        json(tasks);
+        .json(tasks);
     } catch(error) {
       res.status(500)
         .json({
@@ -35,7 +35,7 @@ module.exports = {
       const task = await model.update(id, req.body);
 
       res.status(200)
-        json(task);
+        .json(task);
     } catch(error) {
       res.status(500)
         .json({
@@ -50,7 +50,7 @@ module.exports = {
       const task = await model.delete(id);
 
       res.status(200)
-        json({
+        .json({
           message: 'Delete successful',
           removed: task
         });
