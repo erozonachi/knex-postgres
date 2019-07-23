@@ -43,4 +43,22 @@ module.exports = {
         });
     }
   },
+
+  delete: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const task = await model.delete(id);
+
+      res.status(200)
+        json({
+          message: 'Delete successful',
+          removed: task
+        });
+    } catch(error) {
+      res.status(500)
+        .json({
+          error: 'Server error'
+        });
+    }
+  },
 };
