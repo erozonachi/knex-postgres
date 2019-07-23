@@ -16,5 +16,12 @@ module.exports = {
       .update(changes)
       .where({ id })
       .returning("*");
+  },
+
+  delete: function(id) {
+    return db('tasks')
+      .delete()
+      .where({ id })
+      .returning("*");
   }
 }
