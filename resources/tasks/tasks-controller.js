@@ -8,6 +8,10 @@ module.exports = {
       res.status(201)
         .json(newTask[0]);
     } catch(error) {
+      if(error.code === '23505' && error.detail.includes('title')) {
+        return res.status(400)
+          .json({ message: 'Supplied title field already exists' });
+      }
       res.status(500)
         .json({
           error: 'Server error'
