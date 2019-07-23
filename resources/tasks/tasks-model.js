@@ -6,4 +6,8 @@ module.exports = {
       .insert(task)
       .returning("*");
   },
+
+  read: function() {
+    return db('tasks');
+  }
 }
