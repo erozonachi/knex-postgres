@@ -9,7 +9,6 @@ module.exports = {
       min: 2,
       max: 10
     },
-    useNullAsDefault: true,
     migrations: {
       directory: './data/migrations',
       tableName: 'db_migrations'
