@@ -13,5 +13,19 @@ module.exports = {
           error: 'Server error'
         });
     }
+  },
+
+  read: async (req, res) => {
+    try {
+      const tasks = await model.read();
+
+      res.status(200)
+        json(tasks);
+    } catch(error) {
+      res.status(500)
+        .json({
+          error: 'Server error'
+        });
+    }
   }
 };
