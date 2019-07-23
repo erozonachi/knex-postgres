@@ -1,5 +1,5 @@
 module.exports = {
-  handleError: (err, req, res) => {
+  handleError: (err, req, res, next) => {
     if(err.code === '23505' && err.detail.includes('title')) {
       return res.status(400)
         .json({ message: 'Supplied title field already exists' });

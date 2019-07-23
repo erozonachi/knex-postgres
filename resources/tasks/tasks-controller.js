@@ -1,39 +1,29 @@
 const model = require('./tasks-model');
 
 module.exports = {
-  create: async (req, res) => {
+  create: async (req, res, next) => {
     try {
       const newTask = await model.create(req.body);
 
       res.status(201)
         .json(newTask[0]);
     } catch(error) {
-      if(error.code === '23505' && error.detail.includes('title')) {
-        return res.status(400)
-          .json({ message: 'Supplied title field already exists' });
-      }
-      res.status(500)
-        .json({
-          error: 'Server error'
-        });
+      next(error);
     }
   },
 
-  read: async (req, res) => {
+  read: async (req, res, next) => {
     try {
       const tasks = await model.read();
 
       res.status(200)
         .json(tasks);
     } catch(error) {
-      res.status(500)
-        .json({
-          error: 'Server error'
-        });
+      next(error);
     }
   },
 
-  update: async (req, res) => {
+  update: async (req, res, next) => {
     try {
       const { id } = req.params;
       const task = await model.update(id, req.body);
@@ -44,14 +34,11 @@ module.exports = {
       res.status(200)
         .json(task[0]);
     } catch(error) {
-      res.status(500)
-        .json({
-          error: 'Server error'
-        });
+      next(error);
     }
   },
 
-  delete: async (req, res) => {
+  delete: async (req, res, next) => {
     try {
       const { id } = req.params;
       const task = await model.delete(id);
@@ -65,10 +52,7 @@ module.exports = {
           removed: task[0]
         });
     } catch(error) {
-      res.status(500)
-        .json({
-          error: 'Server error'
-        });
+      next(error);
     }
   },
 };

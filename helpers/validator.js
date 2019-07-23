@@ -11,11 +11,7 @@ module.exports = {
       .json({ message: 'Missing required description field' });
     }
     if(completed) {
-      if(completed.trim() === '') {
-        return res.status(400)
-        .json({ message: 'Missing required completed field' });
-      }
-      if(completed !== 'true' && completed !== 'false') {
+      if(completed !== true && completed !== false) {
         return res.status(400)
         .json({ message: 'completed field can only hold boolean value' });
       }
