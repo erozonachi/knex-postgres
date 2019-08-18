@@ -1,0 +1,31 @@
+{
+  "name": "knex-postgres",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/erozonachi/knex-postgres.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/erozonachi/knex-postgres/issues"
+  },
+  "homepage": "https://github.com/erozonachi/knex-postgres#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "helmet": "^3.19.0",
+    "knex": "^0.19.0",
+    "pg": "^7.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}
